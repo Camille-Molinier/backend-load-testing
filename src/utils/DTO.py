@@ -4,6 +4,7 @@ class Player:
         self.id = params['id']
         self.pos_x = params['pos_x']
         self.pos_y = params['pos_y']
+        self.score = params['score']
 
     def __str__(self):
         return f'{self.params}'
