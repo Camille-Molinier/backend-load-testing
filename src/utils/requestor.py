@@ -18,7 +18,7 @@ class Requestor:
             print(f'{response.status_code} - {response.text}')
 
     def join(self):
-        response = requests.post(os.path.join(self.api, 'world/join'), data={'name':'Loutre'})
+        response = requests.get(os.path.join(self.api, 'world/join'))
 
         if response.status_code == 200:
             return Player(response.json())
@@ -35,13 +35,6 @@ class Requestor:
     def move(self, id, newX, newY):
         data = {'newX': newX, 'newY': newY}
         response = requests.put(os.path.join(self.api, f'player/{id}/move'), data)
-        if response.status_code == 200:
-            return Player(response.json())
-        else:
-            print(f'{response.status_code} - {response.text}')
-
-    def quit(self, id):
-        response = requests.delete(os.path.join(self.api, f'player/{id}'))
         if response.status_code == 200:
             return Player(response.json())
         else:
